@@ -21,15 +21,20 @@
             align-items: center;
             height: 100vh;
             flex-direction: column;
+            padding: 10px;
         }
 
         .search-container {
             margin-bottom: 20px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
         }
 
         input[type="text"] {
             padding: 12px;
-            width: 350px;
+            width: 90%;
+            max-width: 350px;
             border-radius: 8px;
             border: 2px solid #666;
             background-color: #1e1e1e;
@@ -47,6 +52,7 @@
         .container {
             display: flex;
             justify-content: center;
+            flex-wrap: wrap;
             gap: 20px;
             width: 100%;
             max-width: 1700px;
@@ -57,6 +63,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            width: 100%;
         }
 
         .keyboard-container {
@@ -76,6 +83,7 @@
             justify-content: center;
             flex-wrap: wrap;
             gap: 10px;
+            width: 100%;
         }
 
         .key {
@@ -125,7 +133,6 @@
         .display-area {
             width: 100%;
             height: 700px;
-            /* Verhoog de hoogte van de weergave */
             background: #333;
             display: flex;
             align-items: center;
@@ -142,9 +149,7 @@
         .display-area img,
         .display-area video {
             max-width: 100%;
-            /* Zorgt ervoor dat het media-element maximaal de breedte van de container gebruikt */
             height: auto;
-            /* Behoudt de verhoudingen van de media */
             border-radius: 15px;
             margin-right: 20px;
         }
@@ -164,6 +169,12 @@
             .keyboard-section,
             .keybinds-section {
                 width: 100%;
+            }
+
+            .key {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1em;
             }
 
             .display-area {
