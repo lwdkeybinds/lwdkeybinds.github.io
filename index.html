@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volledig Toetsenbord</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        .search-container {
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            padding: 12px;
+            width: 350px;
+            border-radius: 8px;
+            border: 2px solid #666;
+            background-color: #1e1e1e;
+            color: white;
+            font-size: 1em;
+            transition: all 0.3s ease-in-out;
+        }
+
+        input[type="text"]:focus {
+            border-color: #bb86fc;
+            outline: none;
+            box-shadow: 0 0 8px rgba(187, 134, 252, 0.5);
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            width: 100%;
+            max-width: 1700px;
+        }
+
+        .keyboard-section {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .keyboard-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            padding: 20px;
+            background: #1a1a1a;
+            border-radius: 12px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+            width: 100%;
+        }
+
+        .key-row {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .key {
+            background-color: #222;
+            border: 2px solid #333;
+            color: white;
+            font-size: 1.3em;
+            width: 55px;
+            height: 55px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease-in-out;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .key:hover {
+            background-color: #333;
+            border-color: #bb86fc;
+            transform: translateY(-3px);
+            box-shadow: 0px 4px 8px rgba(187, 134, 252, 0.5);
+        }
+
+        .keybinds-section {
+            flex: 1;
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .keybinds-section h2 {
+            color: #bb86fc;
+            margin-bottom: 20px;
+        }
+
+        .display-area {
+            width: 100%;
+            height: 700px;
+            /* Verhoog de hoogte van de weergave */
+            background: #333;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            color: white;
+            border-radius: 8px;
+            font-size: 1.2em;
+            flex-direction: column;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        .display-area img,
+        .display-area video {
+            max-width: 100%;
+            /* Zorgt ervoor dat het media-element maximaal de breedte van de container gebruikt */
+            height: auto;
+            /* Behoudt de verhoudingen van de media */
+            border-radius: 15px;
+            margin-right: 20px;
+        }
+
+        .display-area p {
+            margin-top: 10px;
+            color: white;
+            font-size: 1.2em;
+        }
+
+        @media (max-width: 868px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .keyboard-section,
+            .keybinds-section {
+                width: 100%;
+            }
+
+            .display-area {
+                height: 600px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="search-container">
+        <input type="text" id="search" placeholder="Zoek naar een keybind..." onkeyup="searchKeybinds()" />
+    </div>
+
+    <div class="container">
+        <div class="keyboard-section">
+            <div class="keyboard-container">
+                <div class="key-row">
+                    <button class="key">Esc</button>
+                    <button class="key">F1</button>
+                    <button class="key">F2</button>
+                    <button class="key">F3</button>
+                    <button class="key">F4</button>
+                    <button class="key">F5</button>
+                    <button class="key">F6</button>
+                    <button class="key">F7</button>
+                    <button class="key">F8</button>
+                    <button class="key">F9</button>
+                    <button class="key">F10</button>
+                    <button class="key">F11</button>
+                    <button class="key">F12</button>
+                </div>
+                <div class="key-row">
+                    <button class="key">~</button>
+                    <button class="key">1</button>
+                    <button class="key">2</button>
+                    <button class="key">3</button>
+                    <button class="key">4</button>
+                    <button class="key">5</button>
+                    <button class="key">6</button>
+                    <button class="key">7</button>
+                    <button class="key">8</button>
+                    <button class="key">9</button>
+                    <button class="key">0</button>
+                    <button class="key">-</button>
+                    <button class="key">=</button>
+                    <button class="key">Backspace</button>
+                </div>
+                <div class="key-row">
+                    <button class="key">Tab</button>
+                    <button class="key">Q</button>
+                    <button class="key">W</button>
+                    <button class="key">E</button>
+                    <button class="key">R</button>
+                    <button class="key">T</button>
+                    <button class="key">Y</button>
+                    <button class="key">U</button>
+                    <button class="key">I</button>
+                    <button class="key">O</button>
+                    <button class="key">P</button>
+                    <button class="key">[</button>
+                    <button class="key">]</button>
+                    <button class="key">\</button>
+                </div>
+                <div class="key-row">
+                    <button class="key">Caps</button>
+                    <button class="key">A</button>
+                    <button class="key">S</button>
+                    <button class="key">D</button>
+                    <button class="key">F</button>
+                    <button class="key">G</button>
+                    <button class="key">H</button>
+                    <button class="key">J</button>
+                    <button class="key">K</button>
+                    <button class="key">L</button>
+                    <button class="key">;</button>
+                    <button class="key">'</button>
+                    <button class="key">Enter</button>
+                </div>
+                <div class="key-row">
+                    <button class="key">Shift</button>
+                    <button class="key">Z</button>
+                    <button class="key">X</button>
+                    <button class="key">C</button>
+                    <button class="key">V</button>
+                    <button class="key">B</button>
+                    <button class="key">N</button>
+                    <button class="key">M</button>
+                    <button class="key">,</button>
+                    <button class="key">.</button>
+                    <button class="key">/</button>
+                    <button class="key">Shift</button>
+                </div>
+                <div class="key-row">
+                    <button class="key">Ctrl</button>
+                    <button class="key">Alt</button>
+                    <button class="key">Spatie</button>
+                    <button class="key">Alt</button>
+                    <button class="key">Ctrl</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="keybinds-section">
+            <h2>Keybind Info</h2>
+            <div class="display-area">
+                <p>Druk op een toets om informatie weer te geven.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const keys = document.querySelectorAll(".key");
+            const displayArea = document.querySelector(".display-area");
+
+            const keybindData = {
+                "Q": {
+                    text: "Bukken", video: "Timeline1.mp4"
+                },
+                "W": {
+                    text: "Vooruit lopen", image: "w.png"
+                },
+                "E": {
+                    text: "Actie voor E", video: "e.mp4"
+                },
+                "R": {
+                    text: "Actie voor R"
+                }
+            };
+
+            keys.forEach(key => {
+                key.addEventListener("click", function () {
+                    const keyText = key.textContent.trim();
+                    const data = keybindData[keyText] || {};
+                    displayArea.innerHTML = "";
+
+                    if (data.text) {
+                        const textElement = document.createElement("p");
+                        textElement.textContent = data.text;
+                        displayArea.appendChild(textElement);
+                    }
+
+                    if (data.image) {
+                        const imgElement = document.createElement("img");
+                        imgElement.src = data.image;
+                        displayArea.appendChild(imgElement);
+                    }
+
+                    if (data.video) {
+                        const videoElement = document.createElement("video");
+                        videoElement.src = data.video;
+                        videoElement.controls = true;
+                        videoElement.style.maxWidth = '80%';
+                        videoElement.style.height = 'auto';
+                        displayArea.appendChild(videoElement);
+                    }
+                });
+            });
+        });
+
+        function searchKeybinds() {
+            const searchTerm = document.getElementById("search").value.toLowerCase();
+            const keys = document.querySelectorAll(".key");
+
+            keys.forEach(key => {
+                const keyText = key.textContent.trim().toLowerCase();
+                if (keyText.includes(searchTerm)) {
+                    key.style.display = 'block';
+                } else {
+                    key.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
