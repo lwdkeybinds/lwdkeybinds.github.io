@@ -21,20 +21,19 @@
             align-items: center;
             height: 100vh;
             flex-direction: column;
-            padding: 10px;
+            overflow-x: hidden;
         }
 
         .search-container {
             margin-bottom: 20px;
             width: 100%;
-            display: flex;
-            justify-content: center;
+            text-align: center;
         }
 
         input[type="text"] {
             padding: 12px;
-            width: 90%;
-            max-width: 350px;
+            width: 80%;
+            max-width: 400px;
             border-radius: 8px;
             border: 2px solid #666;
             background-color: #1e1e1e;
@@ -52,10 +51,10 @@
         .container {
             display: flex;
             justify-content: center;
-            flex-wrap: wrap;
             gap: 20px;
             width: 100%;
             max-width: 1700px;
+            flex-wrap: wrap;
         }
 
         .keyboard-section {
@@ -83,7 +82,6 @@
             justify-content: center;
             flex-wrap: wrap;
             gap: 10px;
-            width: 100%;
         }
 
         .key {
@@ -108,6 +106,36 @@
             border-color: #bb86fc;
             transform: translateY(-3px);
             box-shadow: 0px 4px 8px rgba(187, 134, 252, 0.5);
+        }
+
+        .key {
+            position: relative;
+            /* Zorg ervoor dat de tooltip zich relatief tot de toets positioneert */
+        }
+
+        .key::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            /* Plaats de tooltip boven de toets */
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.75);
+            color: white;
+            padding: 5px;
+            border-radius: 5px;
+            visibility: hidden;
+            /* Verberg de tooltip standaard */
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            font-size: 0.9em;
+            white-space: nowrap;
+        }
+
+        .key:hover::after {
+            visibility: visible;
+            /* Toon de tooltip wanneer je over de toets hovert */
+            opacity: 1;
         }
 
         .keybinds-section {
@@ -160,7 +188,8 @@
             font-size: 1.2em;
         }
 
-        @media (max-width: 868px) {
+        /* Veranderingen voor mobiele weergave */
+        @media (max-width: 768px) {
             .container {
                 flex-direction: column;
                 align-items: center;
@@ -169,16 +198,44 @@
             .keyboard-section,
             .keybinds-section {
                 width: 100%;
+                margin-bottom: 20px;
             }
 
             .key {
-                width: 40px;
-                height: 40px;
+                width: 50px;
+                height: 50px;
                 font-size: 1.1em;
             }
 
             .display-area {
-                height: 600px;
+                height: auto;
+                font-size: 1.1em;
+            }
+
+            input[type="text"] {
+                width: 90%;
+                font-size: 1em;
+            }
+
+            .keybinds-section h2 {
+                font-size: 1.5em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .key {
+                width: 45px;
+                height: 45px;
+                font-size: 1em;
+            }
+
+            .keybinds-section h2 {
+                font-size: 1.3em;
+            }
+
+            .display-area {
+                font-size: 1em;
+                padding: 15px;
             }
         }
     </style>
@@ -193,87 +250,87 @@
         <div class="keyboard-section">
             <div class="keyboard-container">
                 <div class="key-row">
-                    <button class="key">Esc</button>
-                    <button class="key">F1</button>
-                    <button class="key">F2</button>
-                    <button class="key">F3</button>
-                    <button class="key">F4</button>
-                    <button class="key">F5</button>
-                    <button class="key">F6</button>
-                    <button class="key">F7</button>
-                    <button class="key">F8</button>
-                    <button class="key">F9</button>
-                    <button class="key">F10</button>
-                    <button class="key">F11</button>
-                    <button class="key">F12</button>
+                    <button class="key" data-tooltip="Esc - Sluit het menu">Esc</button>
+                    <button class="key" data-tooltip="F1 - Help">F1</button>
+                    <button class="key" data-tooltip="F2 - Scherminstellingen">F2</button>
+                    <button class="key" data-tooltip="F3 - Open zoekfunctie">F3</button>
+                    <button class="key" data-tooltip="F4 - Sluit venster">F4</button>
+                    <button class="key" data-tooltip="F5 - Vernieuw">F5</button>
+                    <button class="key" data-tooltip="F6 - Verberg scherm">F6</button>
+                    <button class="key" data-tooltip="F7 - Opties">F7</button>
+                    <button class="key" data-tooltip="F8 - Volgend scherm">F8</button>
+                    <button class="key" data-tooltip="F9 - Systeemstatus">F9</button>
+                    <button class="key" data-tooltip="F10 - Stoppen">F10</button>
+                    <button class="key" data-tooltip="F11 - Schermgrootte">F11</button>
+                    <button class="key" data-tooltip="F12 - Opslaan">F12</button>
                 </div>
                 <div class="key-row">
-                    <button class="key">~</button>
-                    <button class="key">1</button>
-                    <button class="key">2</button>
-                    <button class="key">3</button>
-                    <button class="key">4</button>
-                    <button class="key">5</button>
-                    <button class="key">6</button>
-                    <button class="key">7</button>
-                    <button class="key">8</button>
-                    <button class="key">9</button>
-                    <button class="key">0</button>
-                    <button class="key">-</button>
-                    <button class="key">=</button>
-                    <button class="key">Backspace</button>
+                    <button class="key" data-tooltip="~ - Tilde teken">~</button>
+                    <button class="key" data-tooltip="1 - Nummer 1">1</button>
+                    <button class="key" data-tooltip="2 - Nummer 2">2</button>
+                    <button class="key" data-tooltip="3 - Nummer 3">3</button>
+                    <button class="key" data-tooltip="4 - Nummer 4">4</button>
+                    <button class="key" data-tooltip="5 - Nummer 5">5</button>
+                    <button class="key" data-tooltip="6 - Nummer 6">6</button>
+                    <button class="key" data-tooltip="7 - Nummer 7">7</button>
+                    <button class="key" data-tooltip="8 - Nummer 8">8</button>
+                    <button class="key" data-tooltip="9 - Nummer 9">9</button>
+                    <button class="key" data-tooltip="0 - Nummer 0">0</button>
+                    <button class="key" data-tooltip="- - Minteken">-</button>
+                    <button class="key" data-tooltip="= - Gelijkteken">=</button>
+                    <button class="key" data-tooltip="Backspace - Verwijder het vorige teken">Backspace</button>
                 </div>
                 <div class="key-row">
-                    <button class="key">Tab</button>
-                    <button class="key">Q</button>
-                    <button class="key">W</button>
-                    <button class="key">E</button>
-                    <button class="key">R</button>
-                    <button class="key">T</button>
-                    <button class="key">Y</button>
-                    <button class="key">U</button>
-                    <button class="key">I</button>
-                    <button class="key">O</button>
-                    <button class="key">P</button>
-                    <button class="key">[</button>
-                    <button class="key">]</button>
-                    <button class="key">\</button>
+                    <button class="key" data-tooltip="Tab - Tabblad">Tab</button>
+                    <button class="key" data-tooltip="Q - Q toets">Q</button>
+                    <button class="key" data-tooltip="W - W toets">W</button>
+                    <button class="key" data-tooltip="E - E toets">E</button>
+                    <button class="key" data-tooltip="R - R toets">R</button>
+                    <button class="key" data-tooltip="T - T toets">T</button>
+                    <button class="key" data-tooltip="Y - Y toets">Y</button>
+                    <button class="key" data-tooltip="U - U toets">U</button>
+                    <button class="key" data-tooltip="I - I toets">I</button>
+                    <button class="key" data-tooltip="O - O toets">O</button>
+                    <button class="key" data-tooltip="P - P toets">P</button>
+                    <button class="key" data-tooltip="[ - Open haakje">[</button>
+                    <button class="key" data-tooltip="] - Sluit haakje">]</button>
+                    <button class="key" data-tooltip="\\ - Backslash">\\</button>
                 </div>
                 <div class="key-row">
-                    <button class="key">Caps</button>
-                    <button class="key">A</button>
-                    <button class="key">S</button>
-                    <button class="key">D</button>
-                    <button class="key">F</button>
-                    <button class="key">G</button>
-                    <button class="key">H</button>
-                    <button class="key">J</button>
-                    <button class="key">K</button>
-                    <button class="key">L</button>
-                    <button class="key">;</button>
-                    <button class="key">'</button>
-                    <button class="key">Enter</button>
+                    <button class="key" data-tooltip="Caps - Caps lock">Caps</button>
+                    <button class="key" data-tooltip="A - A toets">A</button>
+                    <button class="key" data-tooltip="S - S toets">S</button>
+                    <button class="key" data-tooltip="D - D toets">D</button>
+                    <button class="key" data-tooltip="F - F toets">F</button>
+                    <button class="key" data-tooltip="G - G toets">G</button>
+                    <button class="key" data-tooltip="H - H toets">H</button>
+                    <button class="key" data-tooltip="J - J toets">J</button>
+                    <button class="key" data-tooltip="K - K toets">K</button>
+                    <button class="key" data-tooltip="L - L toets">L</button>
+                    <button class="key" data-tooltip="; - Puntkomma">;</button>
+                    <button class="key" data-tooltip="' - Apostrof">'</button>
+                    <button class="key" data-tooltip="Enter - Bevestig invoer">Enter</button>
                 </div>
                 <div class="key-row">
-                    <button class="key">Shift</button>
-                    <button class="key">Z</button>
-                    <button class="key">X</button>
-                    <button class="key">C</button>
-                    <button class="key">V</button>
-                    <button class="key">B</button>
-                    <button class="key">N</button>
-                    <button class="key">M</button>
-                    <button class="key">,</button>
-                    <button class="key">.</button>
-                    <button class="key">/</button>
-                    <button class="key">Shift</button>
+                    <button class="key" data-tooltip="Shift - Shift toets">Shift</button>
+                    <button class="key" data-tooltip="Z - Z toets">Z</button>
+                    <button class="key" data-tooltip="X - X toets">X</button>
+                    <button class="key" data-tooltip="C - C toets">C</button>
+                    <button class="key" data-tooltip="V - V toets">V</button>
+                    <button class="key" data-tooltip="B - B toets">B</button>
+                    <button class="key" data-tooltip="N - N toets">N</button>
+                    <button class="key" data-tooltip="M - M toets">M</button>
+                    <button class="key" data-tooltip=", - Komma">,</button>
+                    <button class="key" data-tooltip=". - Punt">.</button>
+                    <button class="key" data-tooltip="/ - Slash">/</button>
+                    <button class="key" data-tooltip="Shift - Shift toets">Shift</button>
                 </div>
                 <div class="key-row">
-                    <button class="key">Ctrl</button>
-                    <button class="key">Alt</button>
-                    <button class="key">Spatie</button>
-                    <button class="key">Alt</button>
-                    <button class="key">Ctrl</button>
+                    <button class="key" data-tooltip="Ctrl - Controle toets">Ctrl</button>
+                    <button class="key" data-tooltip="Alt - Alt toets">Alt</button>
+                    <button class="key" data-tooltip="Spatie - Spatiebalk">Spatie</button>
+                    <button class="key" data-tooltip="Alt - Alt toets">Alt</button>
+                    <button class="key" data-tooltip="Ctrl - Controle toets">Ctrl</button>
                 </div>
             </div>
         </div>
@@ -334,21 +391,44 @@
                     }
                 });
             });
+
+            // Zoekfunctie
+            function searchKeybinds() {
+                const searchTerm = document.getElementById("search").value.toLowerCase();
+                const keys = document.querySelectorAll(".key");
+                const keybindData = {
+                    "Q": {
+                        text: "Bukken"
+                    },
+                    "W": {
+                        text: "Vooruit lopen"
+                    },
+                    "E": {
+                        text: "Actie voor E"
+                    },
+                    "R": {
+                        text: "Actie voor R"
+                    }
+                };
+
+                keys.forEach(key => {
+                    const keyText = key.textContent.trim().toLowerCase();
+                    const tooltipText = key.getAttribute('data-tooltip') ? key.getAttribute('data-tooltip').toLowerCase() : '';
+                    const keybindText = keybindData[keyText] ? keybindData[keyText].text.toLowerCase() : "";
+
+                    // Zoek in de toetsen tekst, keybind tekst en tooltip tekst
+                    if (keyText.includes(searchTerm) || keybindText.includes(searchTerm) || tooltipText.includes(searchTerm)) {
+                        key.style.display = 'block';
+                    } else {
+                        key.style.display = 'none';
+                    }
+                });
+            }
+
+            // Event listener voor zoekbalk
+            document.getElementById("search").addEventListener("input", searchKeybinds);
         });
 
-        function searchKeybinds() {
-            const searchTerm = document.getElementById("search").value.toLowerCase();
-            const keys = document.querySelectorAll(".key");
-
-            keys.forEach(key => {
-                const keyText = key.textContent.trim().toLowerCase();
-                if (keyText.includes(searchTerm)) {
-                    key.style.display = 'block';
-                } else {
-                    key.style.display = 'none';
-                }
-            });
-        }
     </script>
 </body>
 
