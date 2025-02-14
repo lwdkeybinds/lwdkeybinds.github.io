@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Volledig Toetsenbord</title>
+    <title>Leeuwarden toetsen</title>
     <style>
         * {
             margin: 0;
@@ -58,30 +58,38 @@
         }
 
         .keyboard-section {
-            flex: 2;
+            flex: 1;
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: flex-start;
             width: 100%;
         }
 
-        .keyboard-container {
+        .keyboard-list {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            flex-direction: column;
+            align-items: flex-start;
             gap: 10px;
-            padding: 20px;
-            background: #1a1a1a;
-            border-radius: 12px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
             width: 100%;
+            max-height: 500px;
+            overflow-y: auto;
+            background-color: #1a1a1a;
+            padding: 10px;
+            border-radius: 8px;
         }
 
-        .key-row {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
+        .keyboard-list::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        .keyboard-list::-webkit-scrollbar-thumb {
+            background-color: #828002;
+            border-radius: 5px;
+        }
+
+        .keyboard-list::-webkit-scrollbar-track {
+            background-color: #1e1e1e;
+            border-radius: 5px;
         }
 
         .key {
@@ -89,9 +97,9 @@
             border: 2px solid #333;
             color: white;
             font-size: 1.3em;
-            width: 55px;
+            width: 80%;
             height: 55px;
-            margin: 5px;
+            margin: 5px 0;
             cursor: pointer;
             border-radius: 10px;
             display: flex;
@@ -103,39 +111,9 @@
 
         .key:hover {
             background-color: #333;
-            border-color: #bb86fc;
+            border-color: #acb778;
             transform: translateY(-3px);
             box-shadow: 0px 4px 8px rgba(187, 134, 252, 0.5);
-        }
-
-        .key {
-            position: relative;
-            /* Zorg ervoor dat de tooltip zich relatief tot de toets positioneert */
-        }
-
-        .key::after {
-            content: attr(data-tooltip);
-            position: absolute;
-            bottom: 100%;
-            /* Plaats de tooltip boven de toets */
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: rgba(0, 0, 0, 0.75);
-            color: white;
-            padding: 5px;
-            border-radius: 5px;
-            visibility: hidden;
-            /* Verberg de tooltip standaard */
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
-            font-size: 0.9em;
-            white-space: nowrap;
-        }
-
-        .key:hover::after {
-            visibility: visible;
-            /* Toon de tooltip wanneer je over de toets hovert */
-            opacity: 1;
         }
 
         .keybinds-section {
@@ -154,7 +132,7 @@
         }
 
         .keybinds-section h2 {
-            color: #bb86fc;
+            color: #7d364f;
             margin-bottom: 20px;
         }
 
@@ -248,90 +226,37 @@
 
     <div class="container">
         <div class="keyboard-section">
-            <div class="keyboard-container">
-                <div class="key-row">
-                    <button class="key" data-tooltip="Esc - Sluit het menu">Esc</button>
-                    <button class="key" data-tooltip="F1 - Help">F1</button>
-                    <button class="key" data-tooltip="F2 - Scherminstellingen">F2</button>
-                    <button class="key" data-tooltip="F3 - Open zoekfunctie">F3</button>
-                    <button class="key" data-tooltip="F4 - Sluit venster">F4</button>
-                    <button class="key" data-tooltip="F5 - Vernieuw">F5</button>
-                    <button class="key" data-tooltip="F6 - Verberg scherm">F6</button>
-                    <button class="key" data-tooltip="F7 - Opties">F7</button>
-                    <button class="key" data-tooltip="F8 - Volgend scherm">F8</button>
-                    <button class="key" data-tooltip="F9 - Systeemstatus">F9</button>
-                    <button class="key" data-tooltip="F10 - Stoppen">F10</button>
-                    <button class="key" data-tooltip="F11 - Schermgrootte">F11</button>
-                    <button class="key" data-tooltip="F12 - Opslaan">F12</button>
-                </div>
-                <div class="key-row">
-                    <button class="key" data-tooltip="~ - Tilde teken">~</button>
-                    <button class="key" data-tooltip="1 - Nummer 1">1</button>
-                    <button class="key" data-tooltip="2 - Nummer 2">2</button>
-                    <button class="key" data-tooltip="3 - Nummer 3">3</button>
-                    <button class="key" data-tooltip="4 - Nummer 4">4</button>
-                    <button class="key" data-tooltip="5 - Nummer 5">5</button>
-                    <button class="key" data-tooltip="6 - Nummer 6">6</button>
-                    <button class="key" data-tooltip="7 - Nummer 7">7</button>
-                    <button class="key" data-tooltip="8 - Nummer 8">8</button>
-                    <button class="key" data-tooltip="9 - Nummer 9">9</button>
-                    <button class="key" data-tooltip="0 - Nummer 0">0</button>
-                    <button class="key" data-tooltip="- - Minteken">-</button>
-                    <button class="key" data-tooltip="= - Gelijkteken">=</button>
-                    <button class="key" data-tooltip="Backspace - Verwijder het vorige teken">Backspace</button>
-                </div>
-                <div class="key-row">
-                    <button class="key" data-tooltip="Tab - Tabblad">Tab</button>
-                    <button class="key" data-tooltip="Q - Q toets">Q</button>
-                    <button class="key" data-tooltip="W - W toets">W</button>
-                    <button class="key" data-tooltip="E - E toets">E</button>
-                    <button class="key" data-tooltip="R - R toets">R</button>
-                    <button class="key" data-tooltip="T - T toets">T</button>
-                    <button class="key" data-tooltip="Y - Y toets">Y</button>
-                    <button class="key" data-tooltip="U - U toets">U</button>
-                    <button class="key" data-tooltip="I - I toets">I</button>
-                    <button class="key" data-tooltip="O - O toets">O</button>
-                    <button class="key" data-tooltip="P - P toets">P</button>
-                    <button class="key" data-tooltip="[ - Open haakje">[</button>
-                    <button class="key" data-tooltip="] - Sluit haakje">]</button>
-                    <button class="key" data-tooltip="\\ - Backslash">\\</button>
-                </div>
-                <div class="key-row">
-                    <button class="key" data-tooltip="Caps - Caps lock">Caps</button>
-                    <button class="key" data-tooltip="A - A toets">A</button>
-                    <button class="key" data-tooltip="S - S toets">S</button>
-                    <button class="key" data-tooltip="D - D toets">D</button>
-                    <button class="key" data-tooltip="F - F toets">F</button>
-                    <button class="key" data-tooltip="G - G toets">G</button>
-                    <button class="key" data-tooltip="H - H toets">H</button>
-                    <button class="key" data-tooltip="J - J toets">J</button>
-                    <button class="key" data-tooltip="K - K toets">K</button>
-                    <button class="key" data-tooltip="L - L toets">L</button>
-                    <button class="key" data-tooltip="; - Puntkomma">;</button>
-                    <button class="key" data-tooltip="' - Apostrof">'</button>
-                    <button class="key" data-tooltip="Enter - Bevestig invoer">Enter</button>
-                </div>
-                <div class="key-row">
-                    <button class="key" data-tooltip="Shift - Shift toets">Shift</button>
-                    <button class="key" data-tooltip="Z - Z toets">Z</button>
-                    <button class="key" data-tooltip="X - X toets">X</button>
-                    <button class="key" data-tooltip="C - C toets">C</button>
-                    <button class="key" data-tooltip="V - V toets">V</button>
-                    <button class="key" data-tooltip="B - B toets">B</button>
-                    <button class="key" data-tooltip="N - N toets">N</button>
-                    <button class="key" data-tooltip="M - M toets">M</button>
-                    <button class="key" data-tooltip=", - Komma">,</button>
-                    <button class="key" data-tooltip=". - Punt">.</button>
-                    <button class="key" data-tooltip="/ - Slash">/</button>
-                    <button class="key" data-tooltip="Shift - Shift toets">Shift</button>
-                </div>
-                <div class="key-row">
-                    <button class="key" data-tooltip="Ctrl - Controle toets">Ctrl</button>
-                    <button class="key" data-tooltip="Alt - Alt toets">Alt</button>
-                    <button class="key" data-tooltip="Spatie - Spatiebalk">Spatie</button>
-                    <button class="key" data-tooltip="Alt - Alt toets">Alt</button>
-                    <button class="key" data-tooltip="Ctrl - Controle toets">Ctrl</button>
-                </div>
+            <div class="keyboard-list">
+                <button class="key" data-tooltip="Esc - Sluit het menu">Esc</button>
+                <button class="key" data-tooltip="F1 - Help">F1 - Help</button>
+                <button class="key" data-tooltip="F2 - Scherminstellingen">F2</button>
+                <button class="key" data-tooltip="F3 - Open zoekfunctie">F3</button>
+                <button class="key" data-tooltip="F4 - Sluit venster">F4</button>
+                <button class="key" data-tooltip="F5 - Vernieuw">F5</button>
+                <button class="key" data-tooltip="F6 - Verberg scherm">F6</button>
+                <button class="key" data-tooltip="F7 - Opties">F7</button>
+                <button class="key" data-tooltip="F8 - Volgend scherm / Afsluiten">F8</button>
+                <button class="key" data-tooltip="F9 - Systeemstatus">F9</button>
+                <button class="key" data-tooltip="F10 - Stoppen">F10</button>
+                <button class="key" data-tooltip="F11 - Schermgrootte">F11</button>
+                <button class="key" data-tooltip="F12 - Opslaan">F12</button>
+                <button class="key" data-tooltip="NumPad 1 - Ziekenhuis toegang">NumPad 1</button>
+                <button class="key" data-tooltip="NumPad 2 - Notities weergeven">NumPad 2</button>
+                <button class="key" data-tooltip="NumPad 3 - Garage openen">NumPad 3</button>
+                <button class="key" data-tooltip="NumPad 4 - Zet voertuig aan">NumPad 4</button>
+                <button class="key" data-tooltip="NumPad 5 - Zet voertuig uit">NumPad 5</button>
+                <button class="key" data-tooltip="NumPad 6 - Boetes weergeven">NumPad 6</button>
+                <button class="key" data-tooltip="NumPad 7 - Voertuig repareren">NumPad 7</button>
+                <button class="key" data-tooltip="NumPad 8 - Verkeerslicht bedienen">NumPad 8</button>
+                <button class="key" data-tooltip="NumPad 9 - GPS aansteken">NumPad 9</button>
+                <button class="key" data-tooltip="NumPad 0 - GPS uitschakelen">NumPad 0</button>
+                <button class="key" data-tooltip="T - Chat openen">T</button>
+                <button class="key" data-tooltip="Y - Praten in voice chat">Y</button>
+                <button class="key" data-tooltip="G - Interactie">G</button>
+                <button class="key" data-tooltip="H - Voertuig toeteren">H</button>
+                <button class="key" data-tooltip="K - Voertuig sleutel gebruiken">K</button>
+                <button class="key" data-tooltip="L - Verlichting voertuig aan/uit">L</button>
+                <button class="key" data-tooltip="Z - Lichten aan/uit">Z</button>
             </div>
         </div>
 
@@ -349,19 +274,95 @@
             const displayArea = document.querySelector(".display-area");
 
             const keybindData = {
-                "Q": {
-                    text: "Bukken", video: "loading.mp4"
+                "F1 - Help": {
+                    text: "Help", video: "loading.mp4"
                 },
-                "W": {
-                    text: "Vooruit lopen", image: "w.png"
+                "F2": {
+                    text: "Scherminstellingen", image: "f2.png"
                 },
-                "E": {
-                    text: "Actie voor E", video: "e.mp4"
+                "F3": {
+                    text: "Open zoekfunctie", video: "f3.mp4"
                 },
-                "R": {
-                    text: "Actie voor R"
+                "F4": {
+                    text: "Sluit venster", image: "f4.png"
+                },
+                "F5": {
+                    text: "Vernieuw", video: "f5.mp4"
+                },
+                "F6": {
+                    text: "Verberg scherm", image: "f6.png"
+                },
+                "F7": {
+                    text: "Opties", video: "f7.mp4"
+                },
+                "F8": {
+                    text: "Volgend scherm / Afsluiten", image: "f8.png"
+                },
+                "F9": {
+                    text: "Systeemstatus", video: "f9.mp4"
+                },
+                "F10": {
+                    text: "Stoppen", image: "f10.png"
+                },
+                "F11": {
+                    text: "Schermgrootte", video: "f11.mp4"
+                },
+                "F12": {
+                    text: "Opslaan", image: "f12.png"
+                },
+                "NumPad 1": {
+                    text: "Ziekenhuis toegang", video: "numpad1.mp4"
+                },
+                "NumPad 2": {
+                    text: "Notities weergeven", image: "numpad2.png"
+                },
+                "NumPad 3": {
+                    text: "Garage openen", video: "numpad3.mp4"
+                },
+                "NumPad 4": {
+                    text: "Zet voertuig aan", image: "numpad4.png"
+                },
+                "NumPad 5": {
+                    text: "Zet voertuig uit", video: "numpad5.mp4"
+                },
+                "NumPad 6": {
+                    text: "Boetes weergeven", image: "numpad6.png"
+                },
+                "NumPad 7": {
+                    text: "Voertuig repareren", video: "numpad7.mp4"
+                },
+                "NumPad 8": {
+                    text: "Verkeerslicht bedienen", image: "numpad8.png"
+                },
+                "NumPad 9": {
+                    text: "GPS aansteken", video: "numpad9.mp4"
+                },
+                "NumPad 0": {
+                    text: "GPS uitschakelen", image: "numpad0.png"
+                },
+                "T": {
+                    text: "Chat openen", image: "t.png"
+                },
+                "Y": {
+                    text: "Praten in voice chat", video: "y.mp4"
+                },
+                "G": {
+                    text: "Interactie", image: "g.png"
+                },
+                "H": {
+                    text: "Voertuig toeteren", video: "h.mp4"
+                },
+                "K": {
+                    text: "Voertuig sleutel gebruiken", image: "k.png"
+                },
+                "L": {
+                    text: "Verlichting voertuig aan/uit", video: "l.mp4"
+                },
+                "Z": {
+                    text: "Lichten aan/uit", image: "z.png"
                 }
             };
+
 
             keys.forEach(key => {
                 key.addEventListener("click", function () {
@@ -396,28 +397,13 @@
             function searchKeybinds() {
                 const searchTerm = document.getElementById("search").value.toLowerCase();
                 const keys = document.querySelectorAll(".key");
-                const keybindData = {
-                    "Q": {
-                        text: "Bukken"
-                    },
-                    "W": {
-                        text: "Vooruit lopen"
-                    },
-                    "E": {
-                        text: "Actie voor E"
-                    },
-                    "R": {
-                        text: "Actie voor R"
-                    }
-                };
 
                 keys.forEach(key => {
                     const keyText = key.textContent.trim().toLowerCase();
-                    const tooltipText = key.getAttribute('data-tooltip') ? key.getAttribute('data-tooltip').toLowerCase() : '';
-                    const keybindText = keybindData[keyText] ? keybindData[keyText].text.toLowerCase() : "";
+                    const tooltipText = key.getAttribute('data-tooltip') ? key.getAttribute('data-tooltip').toLowerCase() : "";
 
-                    // Zoek in de toetsen tekst, keybind tekst en tooltip tekst
-                    if (keyText.includes(searchTerm) || keybindText.includes(searchTerm) || tooltipText.includes(searchTerm)) {
+                    // Zoek in de toetsen tekst en tooltip tekst
+                    if (keyText.includes(searchTerm) || tooltipText.includes(searchTerm)) {
                         key.style.display = 'block';
                     } else {
                         key.style.display = 'none';
@@ -428,7 +414,6 @@
             // Event listener voor zoekbalk
             document.getElementById("search").addEventListener("input", searchKeybinds);
         });
-
     </script>
 </body>
 
